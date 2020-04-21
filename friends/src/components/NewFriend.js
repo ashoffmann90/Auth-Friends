@@ -2,13 +2,13 @@ import React from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 class NewFriend extends React.Component {
-    state = {
-        newFriend: {
-            name: '',
-            age: '',
-            email: ''
+        state = {
+            newFriend: {
+                name: '',
+                age: '',
+                email: ''
+            }
         }
-    }
 
     handleChange = e => {
         this.setState({
@@ -20,12 +20,13 @@ class NewFriend extends React.Component {
     }
 
     createFriend = e => {
-        e.preventDefault()
+        // e.preventDefault()
         axiosWithAuth()
         .post('/api/friends', this.state.newFriend)
-        .then(res => {
-            console.log(res)
-        })
+        // .then(res => {
+        //     console.log(res)
+        // })
+        // this.state.newFriends.history.push('/api/friends')
     }
 
     render() {
