@@ -19,6 +19,12 @@ class NewFriend extends React.Component {
         })
     }
 
+
+
+    handleSubmit = e => {
+        e.preventDefault()
+    }
+
     createFriend = e => {
         // e.preventDefault()
         axiosWithAuth()
@@ -31,7 +37,7 @@ class NewFriend extends React.Component {
 
     render() {
         return(
-            <form onSubmit={this.createFriend}>
+            <form onSubmit={this.handleSubmit}>
                 <input 
                   placeholder='Name'
                   type='text'
@@ -53,7 +59,7 @@ class NewFriend extends React.Component {
                   value={this.state.newFriend.email}
                   onChange={this.handleChange}
                 /><br/>
-                <button type='submit'>
+                <button onClick={this.createFriend} type='submit'>
                     Finalize Friend
                 </button>
             </form>
@@ -62,3 +68,7 @@ class NewFriend extends React.Component {
 }
 
 export default NewFriend
+
+
+
+

@@ -9,27 +9,32 @@ class FriendsList extends React.Component {
         friends: []
     }
 
+    
     componentDidMount() {
         this.getData();
-      }
-
-      getData = () => {
-          axiosWithAuth()
-          .get('/api/friends')
-          .then(res=> {
+    }
+    
+    getData = () => {
+        axiosWithAuth()
+        .get('/api/friends')
+        .then(res=> {
             // console.log(res.data)
             this.setState({
                 friends: res.data
             })
-          })
-          .catch(err => {
-              console.log('oops', err)
-          })
-      }
-
-      render() {
-          return(
-              <div>
+        })
+        .catch(err => {
+            console.log('oops', err)
+        })
+    }
+    
+    componentDidUpdate(){
+        this.getData();
+      } 
+    
+    render() {
+        return(
+            <div>
                   <h1>People I think Are OK</h1>
                   <NewFriend />
                   {this.state.friends.map(item => {
